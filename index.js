@@ -39,14 +39,14 @@ function addNumbers(num1, num2) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(id, name, email) {
-  const myPersonalObject = {  
-    myID: id,  
-    myName: name,
-    myEmail: email,  
+function makePersonObject(myID, myName, myEmail) {
+  const myPersonObject = {  
+    id: myID,  
+    name: myName,
+    email: myEmail 
   };
 
-  return myPersonalObject;
+  return myPersonObject;
 }
 
 /**
@@ -81,13 +81,15 @@ function getName(myPersonalObject) {
  *         and returns a string like `Hello, my name is {name}`.
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
-function makeSmartPerson(/* code here */) {
-  /* code here */
+function makeSmartPerson(myName) {
+  const myObject = {
+    name: myName,
+    sum: function(num1, num2) { return num1 + num2 },
+    speak: function() { return 'Hello, my name is ' + myName }
+  };
+
+  return myObject;
 }
-
-
-
-
 
 /*
 // ⭐️ Example Test Data ⭐️
@@ -144,7 +146,9 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  let myCar = "This is a " + inventory[index].car_make + " " + inventory[index].car_model;
+
+  return myCar
 }
 
 /**
@@ -158,8 +162,11 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(inventory) {
+  let theLastIndex = inventory.length - 1;
+  let theLastCar = "This is a " + inventory[theLastIndex].car_make + " " + inventory[theLastIndex].car_model;
+
+  return theLastCar
 }
 
 /**
@@ -174,8 +181,15 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, id) {
+  let theCar = "";
+  for (i = 0; i < inventory.length; i++) {
+    if (inventory[i].id === id) {
+      theCar = "This is a " + inventory[i].car_make + " " + inventory[i].car_model;
+    }
+  }
+
+  return theCar;
 }
 
 /**
